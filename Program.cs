@@ -104,8 +104,6 @@ namespace sınıf_listesi_1._1
                                 bulundu = (false);
 
                             }
-                        }
-
                     }
                 }
             } while (tekrarsec);
