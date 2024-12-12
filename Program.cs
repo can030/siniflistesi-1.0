@@ -81,7 +81,21 @@ namespace sınıf_listesi_1._1
                                 Console.WriteLine("ögrenci bulundu ");
                                 Console.WriteLine("İSİM : " + ogrenciler[i, 0] + " SOYAD : " + ogrenciler[i, 1] + " NUMARASI : " + ogrenciler[i, 2]);
                                 bulundu = true;
-                                
+                                if (bulundu==true)
+                                {
+                                    Console.Write("aramak istediniz ögrenci dogrumu (E/H) : ");
+                                    string dogrumu = Console.ReadLine().ToUpper(); 
+                                    if (dogrumu == "E")
+                                    {
+                                        bulundu=true;
+                                        break;
+                                    }
+                                    else if (dogrumu == "H")
+                                    {
+                                        bulundu=false;
+                                        
+                                    }
+                                }
                                 if (bulundu == true)
                                 {
                                     string secim2;
