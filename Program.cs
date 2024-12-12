@@ -81,6 +81,7 @@ namespace sınıf_listesi_1._1
                                 Console.WriteLine("ögrenci bulundu ");
                                 Console.WriteLine("İSİM : " + ogrenciler[i, 0] + " SOYAD : " + ogrenciler[i, 1] + " NUMARASI : " + ogrenciler[i, 2]);
                                 bulundu = true;
+                                
                                 if (bulundu == true)
                                 {
                                     string secim2;
@@ -93,6 +94,25 @@ namespace sınıf_listesi_1._1
                                         string isim = Console.ReadLine().ToUpper();
                                         string soyad = Console.ReadLine().ToUpper();
                                         string numara = Console.ReadLine().ToUpper();
+                                    }
+                                    else if (secim2 == "2")
+                                    {
+
+                                        // Öğrenciyi silme işlemi
+                                        for (int j = i; j < ogrenciler.GetLength(0) - 1; j++)
+                                        {
+                                            // Öğrencilerin bilgilerini kaydır
+                                            ogrenciler[j, 0] = ogrenciler[j + 1, 0];
+                                            ogrenciler[j, 1] = ogrenciler[j + 1, 1];
+                                            ogrenciler[j, 2] = ogrenciler[j + 1, 2];
+                                        }
+
+                                        // Son öğrenci satırını null yapıyoruz
+                                        ogrenciler[ogrenciler.GetLength(0) - 1, 0] = null;
+                                        ogrenciler[ogrenciler.GetLength(0) - 1, 1] = null;
+                                        ogrenciler[ogrenciler.GetLength(0) - 1, 2] = null;
+
+                                        Console.WriteLine("Öğrenci silindi.");
                                     }
 
                                 }
