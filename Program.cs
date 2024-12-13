@@ -31,6 +31,7 @@ namespace sınıf_listesi_1._1
                         Console.Write(i + 1 + "-ögrencinin numarasını giriniz : ");
                         ogrenciler[i, 2] = Console.ReadLine().ToUpper();
                         ogrencisayısı++;
+                      
 
                         if (ogrencisayısı == ogrenciler.Length)
                         {
