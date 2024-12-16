@@ -37,7 +37,9 @@ namespace sınıf_listesi_1._1
 
                         if (ogrencisayısı == ogrenciler.GetLength(0))
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("maksimum kaydetme sınırına ulaştınız daha fazla ögrenci ekleyemessiniz ");
+                            Console.ResetColor();
                             break;
                         }
                         else
@@ -51,12 +53,16 @@ namespace sınıf_listesi_1._1
                             }
                         }
                     }
-                }
+                }//ögrenci kaydetme
                 else if (secim == "2")// listelemede görülen bir hata yok 
                 {
                     if (ogrencisayısı == 0)
                     {
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Black;
                         Console.WriteLine("listede kayıtlı ögrenci yok");
+                        Console.ResetColor();
+                        
                     }
                     else
                     {
@@ -70,7 +76,7 @@ namespace sınıf_listesi_1._1
                         }
                     }
                  
-                }
+                }//listeleme
                 else if ( secim == "3")
                 {
                     if (secim == "3")
@@ -81,23 +87,25 @@ namespace sınıf_listesi_1._1
                         for (int i = 0; i < ogrenciler.GetLength(0); i++)
                         {
                             if (ogrenciler[i, 0] == aramakriteri || ogrenciler[i, 1] == aramakriteri || ogrenciler[i, 2] == aramakriteri)
-                            {
+                            { 
+                                Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("ögrenci bulundu ");
+                                Console.ResetColor();
                                 Console.WriteLine("İSİM : " + ogrenciler[i, 0] + " SOYAD : " + ogrenciler[i, 1] + " NUMARASI : " + ogrenciler[i, 2]);
                                 bulundu = true;
-                                if (bulundu==true)
+                                if (bulundu == true)
                                 {
                                     Console.Write("aramak istediniz ögrenci dogrumu (E/H) : ");
-                                    string dogrumu = Console.ReadLine().ToUpper(); 
+                                    string dogrumu = Console.ReadLine().ToUpper();
                                     if (dogrumu == "E")
                                     {
-                                        bulundu=true;
-                                        
+                                        bulundu = true;
+
                                     }
                                     else if (dogrumu == "H")
                                     {
-                                        bulundu=false;
-                                        
+                                        bulundu = false;
+
                                     }
                                 }
                                 if (bulundu == true)
@@ -112,52 +120,54 @@ namespace sınıf_listesi_1._1
                                         string degisim = Console.ReadLine().ToUpper();
                                         if (degisim == "1")
                                         {
-                                            Console.WriteLine("lüften " + ogrenciler[i, 0]+ ogrenciler[i,1]+ " adlı ögrencinin yeni ismini giriniz");
+                                            Console.WriteLine("lüften " + ogrenciler[i, 0] + ogrenciler[i, 1] + " adlı ögrencinin yeni ismini giriniz");
                                             ogrenciler[i, 0] = Console.ReadLine().ToUpper();
                                         }
-                                        else if(degisim == "2")
+                                        else if (degisim == "2")
                                         {
                                             Console.WriteLine("lütfen" + ogrenciler[i, 0] + ogrenciler[i, 1] + "adlı ögrencinin yeni soydını giriniz ");
-                                            ogrenciler[i,1] = Console.ReadLine().ToUpper();
+                                            ogrenciler[i, 1] = Console.ReadLine().ToUpper();
                                         }
                                         else if (degisim == "3")
                                         {
                                             Console.WriteLine("lütfen " + ogrenciler[i, 0] + ogrenciler[i, 1] + "adlı ögrencinin yeni numarasını girinz");
                                         }
-                                       
+
                                     }
                                     else if (secim2 == "2")
                                     {
 
-                                        
-                                       /* for (int j = i; j < ogrenciler.GetLength(0) - 1; j++)
-                                        {
-                                            
-                                            ogrenciler[j, 0] = ogrenciler[j + 1, 0];
-                                            ogrenciler[j, 1] = ogrenciler[j + 1, 1];
-                                            ogrenciler[j, 2] = ogrenciler[j + 1, 2];
-                                        }
 
-                                        
-                                        ogrenciler[ogrenciler.GetLength(0) - 1, 0] = null;
-                                        ogrenciler[ogrenciler.GetLength(0) - 1, 1] = null;
-                                        ogrenciler[ogrenciler.GetLength(0) - 1, 2] = null;
+                                        /* for (int j = i; j < ogrenciler.GetLength(0) - 1; j++)
+                                         {
 
-                                        Console.WriteLine("Öğrenci silindi.");*/
+                                             ogrenciler[j, 0] = ogrenciler[j + 1, 0];
+                                             ogrenciler[j, 1] = ogrenciler[j + 1, 1];
+                                             ogrenciler[j, 2] = ogrenciler[j + 1, 2];
+                                         }
+
+
+                                         ogrenciler[ogrenciler.GetLength(0) - 1, 0] = null;
+                                         ogrenciler[ogrenciler.GetLength(0) - 1, 1] = null;
+                                         ogrenciler[ogrenciler.GetLength(0) - 1, 2] = null;
+
+                                         Console.WriteLine("Öğrenci silindi.");*/
                                     }
 
                                 }
 
                             }
-                            else if (!bulundu)
+                            else if (bulundu == false)
                             {
+                                Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("aramak istediniz ögrenci listeye yok veya yanlış girdiniz tekrar deneyiniz ");
+                                Console.ResetColor();
                                 bulundu = (false);
 
                             }
                         }
                     }
-                }
+                }//ögrenci arama
                 Console.WriteLine("Başka işlem yapmak ister misiniz? (e/h): ");
                 tekrarsec = Console.ReadLine().ToLower() == "e";
 
