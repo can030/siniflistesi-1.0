@@ -10,15 +10,17 @@ namespace sınıf_listesi_1._1
     {
         static void Main(string[] args)
         {
+            
+            
             int ogrencisayısı = 0;
-            string[,] ogrenciler = new string[20, 3];
+            string[,] ogrenciler = new string[5,3];
             bool tekrarsec = false;
             int boşluksayısı = 15;
             do
             {
                 Console.WriteLine(" YENİ ÖGRENCİ İÇİN  1 , MEVCUT LİSTEYİ 2 , ÖGRENCİ BULMAK İÇİN  3 ");
                 string secim = Console.ReadLine();
-                if (secim == "1")
+                if (secim == "1") // ögrenci kaydetmede dogru deger girildiginde hata yok yanlış deger girilirse sıkıntı
                 {
                     for (int i = 0; i < ogrenciler.Length; i++)
                     {
@@ -31,44 +33,45 @@ namespace sınıf_listesi_1._1
                         Console.Write(i + 1 + "-ögrencinin numarasını giriniz : ");
                         ogrenciler[i, 2] = Console.ReadLine().ToUpper();
                         ogrencisayısı++;
-                      
 
-                        if (ogrencisayısı == ogrenciler.Length)
+
+                        if (ogrencisayısı == ogrenciler.GetLength(0))
                         {
                             Console.WriteLine("maksimum kaydetme sınırına ulaştınız daha fazla ögrenci ekleyemessiniz ");
-                            Console.WriteLine("Başka işlem yapmak istermisiniz e/h");
-                            string tekrarsecınput = Console.ReadLine().ToLower();
-                            tekrarsec = (tekrarsecınput == "e");
                             break;
                         }
-                        Console.WriteLine("ögrenci eklemeye devam etmek istermisiniz (e/h) : ");
-                        string cevap = Console.ReadLine().ToLower();
-                        if (cevap == "h")
+                        else
                         {
-                            Console.Write("Başka işlem yapmak istermisiniz e/h : ");
-                            string tekrarsecınput = Console.ReadLine().ToLower();
-                            tekrarsec = (tekrarsecınput == "e");
-                            break;
+                            Console.WriteLine("ögrenci eklemeye devam etmek istermisiniz (e/h) : ");
+                            string cevap = Console.ReadLine().ToLower();
+                            if (cevap == "h")
+                            {
+                                
+                                break;
+                            }
                         }
                     }
                 }
-                else if (secim == "2")
+                else if (secim == "2")// listelemede görülen bir hata yok 
                 {
-
-                    for (int i = 0; i < ogrenciler.Length; i++)
+                    if (ogrencisayısı == 0)
                     {
-                        int kalanbosluk1 = boşluksayısı - ogrenciler[i, 0].Length;
-                        int kalanbosluk2 = boşluksayısı - ogrenciler[i, 1].Length;
-                        string sonuc1 = new string(' ', kalanbosluk1);
-                        string sonuc2 = new string(' ', kalanbosluk2);
-                        Console.WriteLine(i + 1 + "-ÖGRENCİ İSİM : " + ogrenciler[i, 0] + sonuc1 + "SOYAD : " + ogrenciler[i, 1] + sonuc2 + "NUMARA : " + ogrenciler[i, 2]);
+                        Console.WriteLine("listede kayıtlı ögrenci yok");
                     }
-                    Console.WriteLine("Başka bir işlem yapmak ister misiniz? (e/h): ");
-                    string devamSecim = Console.ReadLine().ToLower();
-                    tekrarsec = devamSecim == "e";
-
+                    else
+                    {
+                        for (int i = 0; i < ogrencisayısı; i++)
+                        {
+                            int kalanbosluk1 = boşluksayısı - ogrenciler[i, 0].Length;
+                            int kalanbosluk2 = boşluksayısı - ogrenciler[i, 1].Length;
+                            string sonuc1 = new string(' ', kalanbosluk1);
+                            string sonuc2 = new string(' ', kalanbosluk2);
+                            Console.WriteLine(i + 1 + "-ÖGRENCİ İSİM : " + ogrenciler[i, 0] + sonuc1 + "SOYAD : " + ogrenciler[i, 1] + sonuc2 + "NUMARA : " + ogrenciler[i, 2]);
+                        }
+                    }
+                 
                 }
-                else
+                else if ( secim == "3")
                 {
                     if (secim == "3")
                     {
@@ -89,7 +92,7 @@ namespace sınıf_listesi_1._1
                                     if (dogrumu == "E")
                                     {
                                         bulundu=true;
-                                        break;
+                                        
                                     }
                                     else if (dogrumu == "H")
                                     {
@@ -106,28 +109,41 @@ namespace sınıf_listesi_1._1
                                     if (secim2 == "1")
                                     {
                                         Console.WriteLine("hangi bilgiyi güncellemek istersiniz isim - 1 , soyad - 2 , numara-3 için basınız ");
-                                        string isim = Console.ReadLine().ToUpper();
-                                        string soyad = Console.ReadLine().ToUpper();
-                                        string numara = Console.ReadLine().ToUpper();
+                                        string degisim = Console.ReadLine().ToUpper();
+                                        if (degisim == "1")
+                                        {
+                                            Console.WriteLine("lüften " + ogrenciler[i, 0]+ ogrenciler[i,1]+ " adlı ögrencinin yeni ismini giriniz");
+                                            ogrenciler[i, 0] = Console.ReadLine().ToUpper();
+                                        }
+                                        else if(degisim == "2")
+                                        {
+                                            Console.WriteLine("lütfen" + ogrenciler[i, 0] + ogrenciler[i, 1] + "adlı ögrencinin yeni soydını giriniz ");
+                                            ogrenciler[i,1] = Console.ReadLine().ToUpper();
+                                        }
+                                        else if (degisim == "3")
+                                        {
+                                            Console.WriteLine("lütfen " + ogrenciler[i, 0] + ogrenciler[i, 1] + "adlı ögrencinin yeni numarasını girinz");
+                                        }
+                                       
                                     }
                                     else if (secim2 == "2")
                                     {
 
-                                        // Öğrenciyi silme işlemi
-                                        for (int j = i; j < ogrenciler.GetLength(0) - 1; j++)
+                                        
+                                       /* for (int j = i; j < ogrenciler.GetLength(0) - 1; j++)
                                         {
-                                            // Öğrencilerin bilgilerini kaydır
+                                            
                                             ogrenciler[j, 0] = ogrenciler[j + 1, 0];
                                             ogrenciler[j, 1] = ogrenciler[j + 1, 1];
                                             ogrenciler[j, 2] = ogrenciler[j + 1, 2];
                                         }
 
-                                        // Son öğrenci satırını null yapıyoruz
+                                        
                                         ogrenciler[ogrenciler.GetLength(0) - 1, 0] = null;
                                         ogrenciler[ogrenciler.GetLength(0) - 1, 1] = null;
                                         ogrenciler[ogrenciler.GetLength(0) - 1, 2] = null;
 
-                                        Console.WriteLine("Öğrenci silindi.");
+                                        Console.WriteLine("Öğrenci silindi.");*/
                                     }
 
                                 }
@@ -142,7 +158,11 @@ namespace sınıf_listesi_1._1
                         }
                     }
                 }
+                Console.WriteLine("Başka işlem yapmak ister misiniz? (e/h): ");
+                tekrarsec = Console.ReadLine().ToLower() == "e";
+
             } while (tekrarsec) ;
+
         }
     }
 }
